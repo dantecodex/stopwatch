@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap');
+
+:root {
+    --start: #68B984;
+    --stop: #B29141;
+    --reset: #FF004D;
+    --clock: null;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    user-select: none;
+
+}
+
+body {
+    background-color: #222141;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+}
+
+.center-clock {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 280px;
+}
+
+.clock {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    background-color: #141537;
+    font-size: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.clock::before {
+    content: "";
+    position: absolute;
+    /* width: 232px;
+    height: 232px; */
+    background-color: var(--clock);
+    z-index: -1;
+    border-radius: 50%;
+    opacity: 0.5;
+    filter: blur(20px);
+    animation: glow 1.5s ease infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        width: 160px;
+        height: 160px
+    }
+    100% {
+        width: 232px;
+        height: 232px;
+    }
+}
+
+
+.btn {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    column-gap: 32px;
+}
+
+button {
+    position: relative;
+    background-color: #222141;
+    color: white;
+    padding: 10px 35px;
+    border: 1px solid rgba(255, 255, 255, 0.507);
+    border-radius: 20px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.5s;
+    font-weight: 500;
+}
+
+button::before,
+button::after {
+    content: "";
+    position: absolute;
+    filter: blur(10px);
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.5s;
+}
+
+button:hover::before,
+button:hover::after {
+    opacity: 1;
+}
+
+button::before {
+    width: 85px;
+    height: 5px;
+    bottom: 0px;
+    left: 10px;
+}
+
+button::after {
+    width: 90px;
+    height: 5px;
+    top: 12px;
+    left: 4px;
+}
+
+#startbtn::before,
+#startbtn::after {
+    background-color: var(--start);
+}
+
+#stopbtn::before,
+#stopbtn::after {
+    background-color: var(--stop);
+}
+
+#resetbtn::before,
+#resetbtn::after {
+    background-color: var(--reset);
+}
+
+#startbtn:hover {
+    border-color: var(--start);
+    color: var(--start);
+}
+#stopbtn:hover {
+    border-color: var(--stop);
+    color: var(--stop);
+}
+#resetbtn:hover {
+    border-color: var(--reset);
+    color: var(--reset);
+}
